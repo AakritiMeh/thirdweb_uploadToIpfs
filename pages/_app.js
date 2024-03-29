@@ -1,6 +1,5 @@
 import { ThirdwebProvider, ThirdwebStorage } from "@thirdweb-dev/react";
 import "../styles/globals.css";
-require("dotenv").config();
 
 import { NextPage } from "next";
 
@@ -10,13 +9,14 @@ import { NextPage } from "next";
 const activeChain = "ethereum";
 
 function MyApp({ Component, pageProps }) {
-  const env = require("dotenv");
+  const client_id = process.env.NEXT_PUBLIC_CLIENT_ID;
+  const secret = process.env.NEXT_PUBLIC_CLIENT_SECRET;
   return (
     <>
       <ThirdwebProvider
         activeChain={activeChain}
-        clientId={env.CLIENT_ID}
-        secretKey={env.CLIENT_SECRET}
+        clientId={client_id}
+        secretKey={secret}
       >
         <Component {...pageProps} />
       </ThirdwebProvider>
